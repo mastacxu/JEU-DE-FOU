@@ -14,3 +14,8 @@ def affichage():
 def jeu():
     print('à remplir')
 
+def play_music(fichier, voluume, boucle=-1): # -1 pour tourner en bouble (on met qu'un parametre)
+    pygame.mixer.music.stop() # stop la musique précédente
+    pygame.mixer.music.load(fichier) # lance la musique choisi
+    pygame.mixer.music.play(boucle)
+    pygame.mixer.music.set_volume(voluume)
