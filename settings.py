@@ -1,5 +1,8 @@
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1080
+import pygame
+pygame.init()
+infos_ecran = pygame.display.Info()
+SCREEN_WIDTH = infos_ecran.current_w -100
+SCREEN_HEIGHT = infos_ecran.current_h -100
 FPS = 60
 TITLE = "JEU"
 PLAYER_SPEED = 5

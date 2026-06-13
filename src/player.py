@@ -8,8 +8,8 @@ class Player(pygame.sprite.Sprite) :
         self.image = pygame.image.load("assets/player/rudy.jpg")
         self.image = pygame.transform.scale(self.image, (50, 80))
         self.rect = self.image.get_rect()
-        self.rect.x = 1600
-        self.rect.y = 700
+        self.rect.x = SCREEN_WIDTH - 500
+        self.rect.y = SCREEN_HEIGHT - 400
         self.initx = self.rect.x 
         self.inity = self.rect.y
         self.sol = True
