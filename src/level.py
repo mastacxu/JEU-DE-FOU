@@ -1,5 +1,6 @@
 import pygame
 import pytmx
+from settings import *
 
 class Level :
     def __init__(self, map_file, tmx_file, nom):
