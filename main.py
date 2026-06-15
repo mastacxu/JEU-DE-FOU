@@ -10,7 +10,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SCALED)
 pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
 
-level = Level("assets/maps/map1.png", "assets/maps/map1.tmx", "map1")
+level = Level("assets/maps/map1v2.png", "assets/maps/map1v2.tmx", "map1")
 player = Player()
 
 
@@ -37,8 +37,12 @@ def boutons(running, max_droite, max_gauche,max_bas,max_haut):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                player.sauter()
 
     touches = pygame.key.get_pressed() 
+    """version pas cote
     if touches[pygame.K_d] and not touches[pygame.K_q] :
         if max_gauche and player.rect.x < player.initx:
             player.rect.x += PLAYER_SPEED
@@ -78,6 +82,29 @@ def boutons(running, max_droite, max_gauche,max_bas,max_haut):
     if player.rect.y == player.inity :
         max_haut = False
         max_bas = False
+    """
+    #version de cote :
+    touches = pygame.key.get_pressed()
+    if touches[pygame.K_d] and not touches[pygame.K_q] :
+        if max_gauche and player.rect.x < player.initx:
+            player.rect.x += PLAYER_SPEED
+        elif max_droite:
+            player.rect.x += PLAYER_SPEED
+        else:
+            level.rect.x -= PLAYER_SPEED
+        if player.rect.x >= player.initx:
+            max_gauche = False
+        droite = True
+        gauche = False
+    
+    if touches[pygame.K_q] and not touches[pygame.K_d]:
+        if player.initx == player.rect.x and not max_gauche:  # si le joueur est à sa position initiale, on bouge la map
+            max_droite = False  # on peut à nouveau bouger à droite 
+        if player.initx == player.rect.x and not max_gauche:
+            level.rect.x += PLAYER_SPEED
+        if max_droite or max_gauche:
+            player.rect.x -= PLAYER_SPEED
+
     return running, max_droite, max_gauche,max_bas,max_haut
 
 def jeu():
