@@ -42,7 +42,7 @@ def boutons(running, max_droite, max_gauche,max_bas,max_haut):
                 player.sauter()
 
     touches = pygame.key.get_pressed() 
-    """version pas cote
+    #version pas cote
     if touches[pygame.K_d] and not touches[pygame.K_q] :
         if max_gauche and player.rect.x < player.initx:
             player.rect.x += PLAYER_SPEED
@@ -104,7 +104,7 @@ def boutons(running, max_droite, max_gauche,max_bas,max_haut):
             level.rect.x += PLAYER_SPEED
         if max_droite or max_gauche:
             player.rect.x -= PLAYER_SPEED
-
+    """
     return running, max_droite, max_gauche,max_bas,max_haut
 
 def jeu():

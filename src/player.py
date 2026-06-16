@@ -8,7 +8,7 @@ class Player(pygame.sprite.Sprite) :
         self.image = pygame.image.load("assets/player/rudy.jpg")
         self.image = pygame.transform.scale(self.image, (50, 80))
         self.rect = self.image.get_rect()
-        self.rect.x = 200
+        self.rect.x = 400
         self.rect.y = 500
         self.initx = self.rect.x 
         self.inity = self.rect.y
@@ -23,9 +23,10 @@ class Player(pygame.sprite.Sprite) :
             return False
     
     def gravite(self, plateformes, offset_x):
+        """
         self.vitesse_chute += GRAVITY
         self.rect.y += self.vitesse_chute
-
+        """
         for plat in plateformes:
             plat_decalee = pygame.Rect(plat.x + offset_x, plat.y, plat.width, plat.height)
             if self.rect.colliderect(plat_decalee):
